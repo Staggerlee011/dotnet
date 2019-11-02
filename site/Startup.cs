@@ -42,6 +42,8 @@ namespace site
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSecurityHeaders();
+
             app.UseRouting();
 
             app.UseAuthorization();
