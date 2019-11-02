@@ -42,7 +42,9 @@ namespace site
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            // security headers
             app.UseSecurityHeaders();
+            app.UseReferrerPolicy(opts => opts.NoReferrer());
 
             app.UseRouting();
 
