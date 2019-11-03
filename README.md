@@ -16,3 +16,12 @@ adding security headers can be completed by the below steps:
 - Add securityheadersattribute.cs
 - Add securityheadersmiddleware.cs
 - update startup.cs to contain: app.UseSecurityHeaders();
+
+## configuration settings
+
+Updated code to use dev.sjb.ninja index text and navbar color be different.
+
+- Updated appsettings.json / development.appsettings.json with environment variables.
+- added same variables to azure web apps
+- updated HomeController to add configuration and ViewData settings
+
