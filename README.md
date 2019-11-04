@@ -25,3 +25,12 @@ Updated code to use dev.sjb.ninja index text and navbar color be different.
 - added same variables to azure web apps
 - updated HomeController to add configuration and ViewData settings
 
+## dockerfile
+
+Added basic docker file to create linux container.
+
+- based on mcr.microsoft.com/dotnet/core/aspnet:3.0
+- copies release to container and uses site.dll
+- listens to all ips
+- uses aspnetcore_environment to move from development to production
+
