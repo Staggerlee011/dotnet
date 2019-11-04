@@ -28,7 +28,6 @@ namespace site.Controllers
         public IActionResult Index()
         {
             ViewData["EnvTitle"] = _configuration["Environment:Title"];
-            ViewData["nav-color"] = _configuration["Environment:nav-color"];
             return View();
         }
 
