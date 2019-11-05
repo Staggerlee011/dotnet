@@ -1,0 +1,40 @@
+﻿@model EmailModel
+@{
+    ViewData["Title"] = "Contact Form";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Contact Form</h5>
+    </div>
+    <div class="card-body">
+        <form asp-action="SendgridEmailSubmit" asp-controller="Home" method="post">
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email From</label>
+                <input type="email" class="form-control" asp-for="From" id="exampleInputEmail1">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail2">Email To</label>
+                <input type="email" class="form-control" asp-for="To" id="exampleInputEmail2">
+            </div>
+
+            <div class="form-group">
+                <label for="emailSubject">Subject</label>
+                <input class="form-control" asp-for="Subject" id="emailSubject">
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Body"></textarea>
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-dark" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
