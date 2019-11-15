@@ -23,7 +23,7 @@ namespace site
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNToastNotifyToastr();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +49,9 @@ namespace site
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // add notifications 
+            app.UseNToastNotify();
 
             app.UseEndpoints(endpoints =>
             {

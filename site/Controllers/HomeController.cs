@@ -10,6 +10,7 @@ using site.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using static site.Models.EmailModel;
+using NToastNotify;
 
 namespace site.Controllers
 {
@@ -17,13 +18,16 @@ namespace site.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IConfiguration _configuration;
+        private readonly IToastNotification _toastNotification;
 
         public HomeController(
             ILogger<HomeController> logger,
-            IConfiguration Configuration)
+            IConfiguration Configuration,
+             IToastNotification toastNotification)
         {
             _logger = logger;
             _configuration = Configuration;
+            _toastNotification = toastNotification;
         }
 
         
@@ -31,6 +35,7 @@ namespace site.Controllers
         public IActionResult Index()
         {
             ViewData["EnvTitle"] = _configuration["Environment:Title"];
+            
             return View();
         }
 
@@ -43,6 +48,7 @@ namespace site.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> SendgridEmailSubmit(EmailModel emailmodel)
         {
@@ -50,8 +56,10 @@ namespace site.Controllers
             SendGrid emailexample = new SendGrid();
             await emailexample.Execute(emailmodel.From, emailmodel.To, emailmodel.Subject, emailmodel.Body
                 , emailmodel.Body);
-
-            return View("Index");
+            
+            ModelState.Clear();
+            _toastNotification.AddSuccessToastMessage("Thanks someone will be contact with you soon");
+            return View("Contact");
         }
 
 
