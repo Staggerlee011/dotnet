@@ -34,3 +34,11 @@ Added basic docker file to create linux container.
 - listens to all ips
 - uses aspnetcore_environment to move from development to production
 
+## contact
+
+added contact page using sendgrid and NToastly
+
+- add nuget for sendgrid and ntoast
+- update configure and iconfig for ntoast and sendgrid
+- add new page for contact
+- add model for sendgrid
