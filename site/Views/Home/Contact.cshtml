@@ -13,23 +13,27 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Email From</label>
                 <input type="email" class="form-control" asp-for="From" id="exampleInputEmail1">
+                <span asp-validation-for="From"></span>
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail2">Email To</label>
                 <input type="email" class="form-control" asp-for="To" id="exampleInputEmail2">
+                <span asp-validation-for="To"></span>
             </div>
 
             <div class="form-group">
                 <label for="emailSubject">Subject</label>
                 <input class="form-control" asp-for="Subject" id="emailSubject">
+                <span asp-validation-for="Subject"></span>
             </div>
 
 
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Message</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Body"></textarea>
+                <span asp-validation-for="Body"></span>
             </div>
 
             <div class="form-group">
