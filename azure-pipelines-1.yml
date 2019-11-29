@@ -1,0 +1,15 @@
+
+pool:
+ vmImage: 'ubuntu-latest'
+
+steps:
+
+- script: dotnet build ./site/site.csproj
+  displayName: 'Build cs project'
+- task: SnykSecurityScan@0
+  inputs:
+   serviceConnectionEndpoint: 'Snyk'
+   testType: 'app'
+   targetFile: 'site/site.sln'
+   monitorOnBuild: true
+   failOnIssues: true
