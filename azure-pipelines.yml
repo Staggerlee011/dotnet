@@ -1,33 +1,23 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps: 
-- task: Snyk.snyk-security-scan.custom-build-release-task.SnykSecurityScan@0 
- displayName: 'app test' 
- inputs: 
-  serviceConnectionEndpoint: 'Snyk - sjb github' 
-  targetFile: dotnet/site/site.csproj 
-  projectName: 'Staggerlee011/dotnet ' 
-  organization: 'e6178940-aa14-445d-8073-4957c814432b'
+- task: CmdLine@2
+  inputs:
+    script: |
+      docker build -t mycontainer ./site
+      docker images
+      docker images | grep mycontainer
 
-- script: |
-  docker build -t mycontainer ./site
-  docker images
-  docker images | grep mycontainer
- displayName: 'build Docker image'
-
-steps: 
-- task: Snyk.snyk-security-scan.custom-build-release-task.SnykSecurityScan@0 
- displayName: 'dockerfile test' 
- inputs: 
-  serviceConnectionEndpoint: 'Snyk - sjb github' 
-  testType: container 
-  dockerImageName: mycontainer 
-  dockerfilePath: site/dockerfile 
-  projectName: 'Staggerlee011/dotnet ' 
-  organization: 'e6178940-aa14-445d-8073-4957c814432b'
+- task: SnykSecurityScan@0
+  inputs:
+    serviceConnectionEndpoint: 'Snyk - sjb github'
+    testType: 'container'
+    dockerImageName: 'mycontainer'
+    dockerfilePath: 'site/dockerfile'
+    monitorOnBuild: true
+    failOnIssues: false
+    projectName: 'Staggerlee011/dotnet' 
+    organization: 'e6178940-aa14-445d-8073-4957c814432b'
