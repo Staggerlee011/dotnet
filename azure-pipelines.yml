@@ -12,7 +12,7 @@ steps:
   inputs:
     serviceConnectionEndpoint: 'Snyk - sjb github'
     testType: 'app'
-    targetFile: 'site/site.csproj'
+    targetFile: 'site/site.sln'
     monitorOnBuild: true
     failOnIssues: true
     projectName: 'Staggerlee011/dotnet'
