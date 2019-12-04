@@ -14,7 +14,7 @@ steps:
     testType: 'app'
     targetFile: 'site/site.sln'
     monitorOnBuild: true
-    failOnIssues: true
+    failOnIssues: false
     projectName: 'Staggerlee011/dotnet'
     organization: 'e6178940-aa14-445d-8073-4957c814432b'
 
