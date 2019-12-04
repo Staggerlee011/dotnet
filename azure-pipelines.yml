@@ -4,6 +4,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps: 
+
+- task: CmdLine@2
+  inputs:
+    script: 'dotnet build ./site/site.csproj'
+- task: SnykSecurityScan@0
+  inputs:
+    serviceConnectionEndpoint: 'Snyk - sjb github'
+    testType: 'app'
+    monitorOnBuild: true
+    failOnIssues: true
+    projectName: 'Staggerlee011/dotnet' 
+    organization: 'e6178940-aa14-445d-8073-4957c814432b'
+
 - task: CmdLine@2
   inputs:
     script: |
@@ -21,3 +34,4 @@ steps:
     failOnIssues: false
     projectName: 'Staggerlee011/dotnet' 
     organization: 'e6178940-aa14-445d-8073-4957c814432b'
+
