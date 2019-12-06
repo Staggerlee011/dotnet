@@ -42,3 +42,12 @@ added contact page using sendgrid and NToastly
 - update configure and iconfig for ntoast and sendgrid
 - add new page for contact
 - add model for sendgrid
+
+## client-side lib
+
+using npm and gulp to package manage client-side lib (bootstrap / jquery etc)
+
+- install node.js / npm
+- run 'npm install bootstrap' etc to create the package.json and populate module_name
+- create gulp script to copy files from module_name to wwwroot/lib
+- add module_name/ to .gitignore (Not sure this is bp!?)
