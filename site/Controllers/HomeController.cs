@@ -10,7 +10,7 @@ using site.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using static site.Models.EmailModel;
-using NToastNotify;
+//using NToastNotify;
 
 namespace site.Controllers
 {
@@ -18,16 +18,16 @@ namespace site.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IConfiguration _configuration;
-        private readonly IToastNotification _toastNotification;
+        //private readonly IToastNotification _toastNotification;
 
         public HomeController(
             ILogger<HomeController> logger,
-            IConfiguration Configuration,
-             IToastNotification toastNotification)
+            IConfiguration Configuration)
+            // IToastNotification toastNotification)
         {
             _logger = logger;
             _configuration = Configuration;
-            _toastNotification = toastNotification;
+           // _toastNotification = toastNotification;
         }
 
         
@@ -48,7 +48,7 @@ namespace site.Controllers
         {
             return View();
         }
-
+        /*
         [HttpPost]
         public async Task<IActionResult> SendgridEmailSubmit(EmailModel emailmodel)
         {
@@ -62,13 +62,14 @@ namespace site.Controllers
             return View("Contact");
         }
 
-
+    */
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+    /*
 
     internal class SendGrid
     {
@@ -82,5 +83,5 @@ namespace site.Controllers
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
         }
-    }
+    } */
 }
