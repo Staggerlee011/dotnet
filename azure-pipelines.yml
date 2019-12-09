@@ -3,8 +3,12 @@
 pool:
   vmImage: 'ubuntu-latest'
 
-steps: 
+trigger:
+  branches:
+    include:
+    - notrealbranch
 
+steps: 
 - task: CmdLine@2
   inputs:
     script: 'dotnet build ./site/site.csproj'
