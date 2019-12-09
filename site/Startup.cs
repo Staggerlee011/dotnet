@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+
 namespace site
 {
     public class Startup
@@ -23,8 +24,8 @@ namespace site
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews()
-                .AddNToastNotifyToastr();
+            services.AddControllersWithViews();
+                //.AddNToastNotifyToastr();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +53,7 @@ namespace site
             app.UseAuthorization();
 
             // add notifications 
-            app.UseNToastNotify();
+            //app.UseNToastNotify();
 
             app.UseEndpoints(endpoints =>
             {
